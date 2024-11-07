@@ -1,24 +1,21 @@
-# TUGAS 4 PELATIHAN PYTHON
-
-# by Milo Bumi Santoso - 2306222185 (Teknik Perkapalan)
+# ROCK PAPER SCISSORS GAME
 
 # Preface:
-# Disini saya membuat permain gunting-batu-kertas, dimana disini terdapat dua mode permainan,
-#   yaitu bermain bersama komputer atau bermain bersama pemain lain.
+# In this game of rock paper scissors game, there will be a two gamemode that involves including playing with computer or with another player
+
+# This simple project is made out of the project from the python learning program from my university
+
 
 # -----===-----
 
 # Title dan Subtitle
 print("\033[1mROCK, PAPER, SCISSORS GAME\033[0m")
-print("by Milo Bumi Santoso - 2306222185 (Teknik Perkapalan)\n")
 
-# Import beberapa aset yang dibutuhkan pada program ini
-import sys, subprocess # sys ini dibutuhkan untuk menjalankan suatu program tambahan di dalam python
-import random # random untuk generate item random yang diberikan
+import sys, subprocess
+import random 
 
-# fungsi try/expect untuk mengatasi error, apabila user salah memasukkan tipe data
 try:
-  # Meminta jawaban kepada user
+
   print("Please select the gamemode: ")
   print("\033[1m1\033[0m for \033[1mPlayer vs. Computer\033[0m")
   print("\033[1m2\033[0m for \033[1mPlayer vs. Player\033[0m")
@@ -27,7 +24,6 @@ try:
 
   print()
 
-  # Apabila user memiliki 1, maka gamemode akan bermain bersama komputer
   if gamemode == 1:
     # Title
     print("\033[1mPlayer vs. Computer\033[0m")
@@ -35,20 +31,15 @@ try:
     # Set untuk nilai awal dari round
     round = 1
 
-    # Menanyakan kepada user, berapa skor maksimal agar salah satu pemain bisa mendapatkan kemenangan
     print("> Best of?")
     round_counter = int(input("Enter: "))
     print()
 
-    # Set untuk nilai awal dari kedua pemain
     player_score = 0
     comp_score = 0
 
-    # Set untuk beberapa gerakan yang akan dilakukan oleh komputer
     comp_selection = ["rock", "paper", "scissors",]
 
-    # Menentukan bagaimana permainan akan berjalan, dimana apabila skor dari player/komputer melebihi nilai 'round_counter' diatas
-    #   maka permainan akan selesai.
     while player_score < round_counter and comp_score < round_counter:
       # Display untuk round, best of..., skor dari player/komputer
       print("-----===-----", "\n")
@@ -63,45 +54,43 @@ try:
       player_choice = input("Player 1: ").lower() # Fungsi lower() untuk menkonversi string menjadi lowercase seluruhnya
       print()
 
-      # Membuat persyaratan apabila user memasukkan string yang diminta
+
       if (player_choice == "rock" or player_choice == "paper" or player_choice == "scissors"):
         print(f"The player has choose \033[1m{player_choice}\033[0m")
 
-        # Komputer akan memilihi secara acak pada set 'comp_selection' diatas.
+
         comp_choice = random.choice(comp_selection)
         print(f"The computer has choose \033[1m{comp_choice}\033[0m")
 
         print()
 
-        # Permainan seri dari kedua pemain, maka tidak ada penambahan skor dari kedua pemain
         if player_choice == comp_choice:
           print("\033[1mDRAW!\033[0m")
 
           round = round + 1
 
-        # Apabila pemain memenangkan dari sub-permainan, maka pemain akan mendapatkan satu poin.
-          # Batu akan menang melawan gunting
+
         if (player_choice == "rock") and (comp_choice == "scissors"):
           print("\033[1mPLAYER WON!\033[0m")
 
           player_score = player_score + 1
           round = round + 1
 
-          # Kertas akan menang melawan batu
+
         if (player_choice == "paper") and (comp_choice == "rock"):
           print("\033[1mPLAYER WON!\033[0m")
 
           player_score = player_score + 1
           round = round + 1
 
-          # Gunting akan menang melawan kertas
+
         if (player_choice == "scissors") and (comp_choice == "paper"):
           print("\033[1mPLAYER WON!\033[0m")
 
           player_score = player_score + 1
           round = round + 1
 
-        # Apabila pemain memenangkan dari sub-permainan, maka komputer akan mendapatkan satu poin.
+
         if (player_choice == "rock") and (comp_choice == "paper"):
           print("\033[1mCOMPUTER WON!\033[0m")
 
@@ -120,41 +109,39 @@ try:
           comp_score = comp_score + 1
           round = round + 1
       
-      # Apabila user melakukan kesalahan dalam memasukkan input di atas
+
       else:
         print()
         print("\033[1m", "\033[31mERROR!\033[0m", "\033[0m")
         print("Solution: Please enter the correct input, either rock, paper, or scissors")
       
-    # Result dari permainan, apabila permainan telah berakhir
+
     print("-----===-----", "\n")
 
-    # Apabila skor pemain lebih banyak daripada skor komputer
+
     if player_score > comp_score:
       print("Congratulation! You won the game :)")
-    # Apabila skor komputer lebih banyak daripada skor pemain
+
     else:
       print("Better luck next time! :(")
 
-  # Apabila user memiliki 1, maka gamemode akan bermain bersama pemain lain
+
   if gamemode == 2:
     # Title
     print("\033[1mPlayer vs. Player\033[0m")
 
-    # Set untuk nilai awal dari ronde
+
     round = 1
 
-    # Menanyakan kepada user, berapa skor maksimal agar salah satu pemain bisa mendapatkan kemenangan
+
     print("> Best of?")
     round_counter = int(input("Enter: "))
     print()
 
-    # Set untuk nilai awal dari skor player 1 dan player 2
+
     player1_score = 0
     player2_score = 0
 
-    # Menentukan bagaimana permainan akan berjalan, dimana apabila skor dari player1/player2 melebihi nilai 'round_counter' diatas
-    #   maka permainan akan selesai.
     while player1_score < round_counter and player2_score < round_counter:
       # Display untuk round, best of..., skor dari kedua pemain
       print("-----===-----")
@@ -166,40 +153,33 @@ try:
 
       print()
 
-      # Menanyakan kepada pemain 1 untuk memasukkan input
       print("Rock/Paper/Scissors?")
       player1_choice = str(input("Player 1: ")).lower() # Fungsi lower() untuk menkonversi string menjadi lowercase seluruhnya
 
-      # Persyaratan apabila input pemain 1 telah memenuhi syarat dibawah
       if player1_choice == "rock" or player1_choice == "paper" or player1_choice == "scissors":
         # Apabila syarat tersebut dipebuhi, maka terminal output dibawah akan menghapus jawaban dari pemain 1
         # Sehingga tidak ada kecurangan yang berlaku
         subprocess.run("cls", shell=True)
 
-        # Menanyakan kepada pemain 2 untuk memasukkan input
         print("Rock/Paper/Scissors?")
         player2_choice = str(input("Player 2: ")).lower()
 
         print()
 
-        # Display untuk pilihan dari setiap pemain
         print(f"\033[1mPlayer 1\033[0m choose \033[1m{player1_choice}\033[0m")
         print(f"\033[1mPlayer 2\033[0m choose \033[1m{player2_choice}\033[0m")
 
         print()
 
-        # Persyaratan apabila input pemain 2 telah memenuhi syarat dibawah
         if player2_choice == "rock" or player2_choice == "paper" or player2_choice == "scissors":
-        
-          # Untuk persyaratan dibawah sama saja dengan persayaratan yang diatas, atau pada gamemode sebelumnya
 
-          # Seri
+
           if player1_choice == player2_choice:
             print("\033[1mDRAW!\033[0m", "\n")
 
             round += 1
 
-          # Pemain 1 memenangkan match
+
           if (player1_choice == "rock") and (player2_choice == "scissors"):
             print("\033[1mPLAYER 1 WON!\033[0m", "\n")
 
@@ -218,7 +198,7 @@ try:
             player1_score += 1
             round += 1
 
-          # Pemain 2 memenangkan match
+
           if (player1_choice == "rock") and (player2_choice == "paper"):
             print("\033[1mPLAYER 2 WON!\033[0m", "\n")
 
@@ -237,13 +217,12 @@ try:
             player2_score += 1
             round += 1
 
-        # Apabila pemain 2 salah memasukkan input yang diberikan
         else:
           print()
           print("\033[1m", "\033[31mERROR!\033[0m", "\033[0m")
           print("Solution: Please enter the correct input, either rock, paper, or scissors")
 
-      # Apabila pemain 1 salah memasukkan input yang diberikan
+
       else:
         print()
         print("\033[1m", "\033[31mERROR!\033[0m", "\033[0m")
@@ -251,11 +230,10 @@ try:
 
     print("-----===-----", "\n")
 
-    # Menampilkan apabila skor pemain 1 lebih besar daripada pemain 2
     if player1_score > player2_score:
       print("Congratulation! \033[1mPLAYER 1\033[0m won the game!")
 
-    # Menampilkan apabila skor pemain 2 lebih besar daripada pemain 1
+
     else:
       print("Congratulation! \033[1mPLAYER 2\033[0m won the game!")
 
